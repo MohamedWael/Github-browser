@@ -1,7 +1,8 @@
-package io.thed
+package io.thed.modules
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import io.thed.R
 
 class MainActivity : AppCompatActivity() {
 
