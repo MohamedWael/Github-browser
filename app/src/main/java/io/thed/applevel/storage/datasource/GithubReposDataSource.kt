@@ -6,7 +6,7 @@ import io.thed.applevel.storage.AppDatabase
 import io.thed.modules.repos.response.RepoItem
 import kotlinx.coroutines.*
 
-class GithubReposDatasource(db: AppDatabase) : DataSource<RepoItem>(db) {
+class GithubReposDataSource(db: AppDatabase) : DataSource<RepoItem>(db) {
     override fun insertItem(data: RepoItem) {
         doAsync { database.repoItemDao().insert(data) }
     }
