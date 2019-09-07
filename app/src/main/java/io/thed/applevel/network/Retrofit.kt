@@ -17,7 +17,7 @@ object Retrofit {
     private var retrofit: Retrofit? = null
 
     fun init(baseUrl: String) {
-        init(baseUrl = baseUrl, factory = GsonConverterFactory.create())
+        init(OkHttpClient.Builder(), baseUrl, GsonConverterFactory.create())
     }
 
 
