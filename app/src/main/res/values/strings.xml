@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">TheD</string>
-    <string name="data_base_name">thed</string>
+    <string name="app_name">Github browser</string>
+    <string name="data_base_name">github_browser</string>
 
     <string name="bad_request">Please make sure that the data are valid</string>
     <string name="something_went_wrong">Something went wrong</string>
