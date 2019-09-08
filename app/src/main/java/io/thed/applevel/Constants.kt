@@ -6,3 +6,4 @@ const val USERS = "users"
 const val REPOS = "repos"
 const val PAGE = "page"
 const val PER_PAGE = "per_page"
+const val ITEMS_PER_PAGE = 15

@@ -6,10 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import io.thed.applevel.ITEMS_PER_PAGE
 import io.thed.applevel.network.ErrorHandler
 import io.thed.modules.repos.repository.GithubReposRepository
-import io.thed.modules.repos.repository.GithubReposRepositoryImpl
-import io.thed.modules.repos.repository.ITEMS_PER_PAGE
 import io.thed.modules.repos.response.RepoItem
 
 class GithubReposViewModel(private val repository: GithubReposRepository) : ViewModel() {
@@ -24,8 +23,8 @@ class GithubReposViewModel(private val repository: GithubReposRepository) : View
 
     val liveRepoList: LiveData<PagedList<RepoItem>> = LivePagedListBuilder(
         repository.getReposDataSource(),
-        PagedList.Config.Builder().setInitialLoadSizeHint(15).setPageSize(ITEMS_PER_PAGE).setPrefetchDistance(
-            12
+        PagedList.Config.Builder().setInitialLoadSizeHint(ITEMS_PER_PAGE).setPageSize(ITEMS_PER_PAGE).setPrefetchDistance(
+            18
         ).setEnablePlaceholders(
             false
         ).build()

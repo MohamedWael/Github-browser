@@ -2,6 +2,7 @@ package io.thed.applevel.network
 
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 open class NetworkService<Response, RestClient> {
@@ -10,7 +11,7 @@ open class NetworkService<Response, RestClient> {
         observable: Observable<Response>,
         responseCallback: (Response) -> Unit,
         errorCallback: (ErrorHandler) -> Unit
-    ) = observable
+    ): Disposable = observable
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe({
