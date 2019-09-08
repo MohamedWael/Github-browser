@@ -20,7 +20,7 @@ class GithubReposViewModel(private val repository: GithubReposRepository) : View
     val errorHandler: LiveData<ErrorHandler>
         get() = repository.liveErrorHandler
 
-    var page = 1
+    private var page = 1
 
     val liveRepoList: LiveData<PagedList<RepoItem>> = LivePagedListBuilder(
         repository.getReposDataSource(),
@@ -32,6 +32,7 @@ class GithubReposViewModel(private val repository: GithubReposRepository) : View
     ).setBoundaryCallback(object : PagedList.BoundaryCallback<RepoItem>() {
         override fun onItemAtEndLoaded(itemAtEnd: RepoItem) {
             super.onItemAtEndLoaded(itemAtEnd)
+            if (isLoadingMore.get() == true || showProgress.get() == true) return
             loadNextPage()
         }
     }).build()
