@@ -1,4 +1,4 @@
-package io.thed.modules.response
+package io.thed.modules.repos.response
 
 class UserReposResponse: ArrayList<RepoItem>() {
 }

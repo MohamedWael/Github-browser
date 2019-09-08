@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="io.thed.modules.repos.viewmodel.GithubReposViewModel" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".modules.repos.view.GithubReposFragment">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRepos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            tools:listitem="@layout/github_repo_view" />
+
+        <ProgressBar
+            android:id="@+id/LoadMoreProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:visibility="@{viewModel.isLoadingMore?View.VISIBLE :View.GONE}" />
+
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{viewModel.showProgress?View.VISIBLE :View.GONE}" />
+    </FrameLayout>
+</layout>

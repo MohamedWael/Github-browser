@@ -1,4 +1,4 @@
-package io.thed.modules.response
+package io.thed.modules.repos.response
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
@@ -27,7 +27,7 @@ data class Owner(
 	val type: String? = null,
 
 	@field:SerializedName("url")
-	val url: String? = null,
+	val ownerUrl: String? = null,
 
 	@field:SerializedName("subscriptions_url")
 	val subscriptionsUrl: String? = null,
@@ -39,22 +39,22 @@ data class Owner(
 	val avatarUrl: String? = null,
 
 	@field:SerializedName("events_url")
-	val eventsUrl: String? = null,
+	val ownerEventsUrl: String? = null,
 
 	@field:SerializedName("html_url")
-	val htmlUrl: String? = null,
+	val ownerHtmlUrl: String? = null,
 
 	@field:SerializedName("site_admin")
 	val siteAdmin: Boolean? = null,
 
 	@field:SerializedName("id")
-	val id: Int? = null,
+	val ownerId: Int? = null,
 
 	@field:SerializedName("gravatar_id")
 	val gravatarId: String? = null,
 
 	@field:SerializedName("node_id")
-	val nodeId: String? = null,
+	val ownerNodeId: String? = null,
 
 	@field:SerializedName("organizations_url")
 	val organizationsUrl: String? = null

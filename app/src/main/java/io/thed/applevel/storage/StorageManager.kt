@@ -5,7 +5,7 @@ import io.thed.applevel.storage.datasource.GithubReposDataSource
 
 object StorageManager {
 
-    private lateinit var githubReposDataSource: GithubReposDataSource
+    lateinit var githubReposDataSource: GithubReposDataSource
 
     fun init(context: Context) {
         val db = AppDatabase.getDatabase(context)

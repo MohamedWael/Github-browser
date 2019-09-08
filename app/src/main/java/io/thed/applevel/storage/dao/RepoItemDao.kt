@@ -1,7 +1,6 @@
 package io.thed.applevel.storage.dao
 
-import androidx.lifecycle.LiveData
-import androidx.paging.PagedList
+import androidx.paging.DataSource
 import androidx.room.*
 import io.thed.modules.repos.response.RepoItem
 
@@ -10,7 +9,7 @@ import io.thed.modules.repos.response.RepoItem
 interface RepoItemDao {
 
     @Query("SELECT * from github_repo")
-    fun getAllUsers(): LiveData<PagedList<RepoItem>>
+    fun getAllUsersDataSource(): DataSource.Factory<Int, RepoItem>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg repos: RepoItem)

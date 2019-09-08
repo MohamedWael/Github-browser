@@ -1,8 +1,12 @@
-package io.thed.modules.response
+package io.thed.modules.repos.response
 
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
+@Entity(tableName = "github_repo")
 data class RepoItem(
 
 	@field:SerializedName("stargazers_count")
@@ -35,6 +39,7 @@ data class RepoItem(
 	@field:SerializedName("svn_url")
 	val svnUrl: String? = null,
 
+	@PrimaryKey
 	@field:SerializedName("id")
 	val id: Int? = null,
 
@@ -149,6 +154,7 @@ data class RepoItem(
 	@field:SerializedName("has_pages")
 	val hasPages: Boolean? = null,
 
+	@Embedded
 	@field:SerializedName("owner")
 	val owner: Owner? = null,
 

@@ -21,8 +21,6 @@ abstract class DataSource<Data>(val database: AppDatabase) {
 
     abstract fun getItems(): LiveData<List<Data>>
 
-    abstract fun getPagedItems(): LiveData<PagedList<Data>>
-
     abstract fun getItem(): LiveData<Data>
 
     fun <T> doAsync(action: () -> T) {

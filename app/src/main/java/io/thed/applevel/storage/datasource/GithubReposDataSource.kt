@@ -1,10 +1,8 @@
 package io.thed.applevel.storage.datasource
 
 import androidx.lifecycle.LiveData
-import androidx.paging.PagedList
 import io.thed.applevel.storage.AppDatabase
 import io.thed.modules.repos.response.RepoItem
-import kotlinx.coroutines.*
 
 class GithubReposDataSource(db: AppDatabase) : DataSource<RepoItem>(db) {
     override fun insertItem(data: RepoItem) {
@@ -31,8 +29,8 @@ class GithubReposDataSource(db: AppDatabase) : DataSource<RepoItem>(db) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun getPagedItems(): LiveData<PagedList<RepoItem>> {
-        return database.repoItemDao().getAllUsers()
+    fun getItemsDataSource(): androidx.paging.DataSource.Factory<Int, RepoItem> {
+        return database.repoItemDao().getAllUsersDataSource()
     }
 
     override fun getItem(): LiveData<RepoItem> {
