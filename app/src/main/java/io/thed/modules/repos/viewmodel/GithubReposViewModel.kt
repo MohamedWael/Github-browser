@@ -18,6 +18,9 @@ class GithubReposViewModel(private val repository: GithubReposRepository) : View
     val errorHandler: LiveData<ErrorHandler>
         get() = repository.liveErrorHandler
 
+    val isLastItem: LiveData<Boolean>
+        get() = repository.liveIsLastItem
+
     private var page = 1
 
     val liveRepoList: LiveData<PagedList<RepoItem>> = LivePagedListBuilder(
@@ -25,7 +28,7 @@ class GithubReposViewModel(private val repository: GithubReposRepository) : View
         PagedList.Config.Builder().setInitialLoadSizeHint(ITEMS_PER_PAGE).setPageSize(ITEMS_PER_PAGE).setPrefetchDistance(
             18
         ).setEnablePlaceholders(
-            false
+            true
         ).build()
     ).setBoundaryCallback(object : PagedList.BoundaryCallback<RepoItem>() {
         override fun onItemAtEndLoaded(itemAtEnd: RepoItem) {

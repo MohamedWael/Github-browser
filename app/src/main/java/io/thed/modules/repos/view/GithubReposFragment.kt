@@ -50,7 +50,13 @@ class GithubReposFragment : Fragment() {
     }
 
     private fun observeOnReposList(adapter: GithubReposAdapter) {
+        viewModel.isLastItem.observe(viewLifecycleOwner, Observer {
+            if (it){
+                viewModel.hideProgress()
+            }
+        })
         viewModel.liveRepoList.observe(viewLifecycleOwner, Observer {
+            viewModel.hideProgress()
             adapter.submitList(it)
         })
         adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {

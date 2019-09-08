@@ -16,6 +16,7 @@ import io.thed.modules.repos.response.UserReposResponse
 class GithubReposRepositoryImpl : GithubReposRepository {
 
     override val liveErrorHandler: MutableLiveData<ErrorHandler> = MutableLiveData()
+    override val liveIsLastItem: MutableLiveData<Boolean> = MutableLiveData()
 
     override fun getReposDataSource(): DataSource.Factory<Int, RepoItem> {
         return StorageManager.githubReposDataSource.getItemsDataSource()
@@ -29,6 +30,7 @@ class GithubReposRepositoryImpl : GithubReposRepository {
                     "JakeWharton",
                     mapOf(Pair(PAGE, page.toString()), Pair(PER_PAGE, ITEMS_PER_PAGE.toString()))
                 ), {
+                    liveIsLastItem.value = it.size == 0
                     StorageManager.githubReposDataSource.insertAll(it)
                 }, {
                     liveErrorHandler.value = it

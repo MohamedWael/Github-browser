@@ -8,6 +8,7 @@ import io.thed.modules.repos.response.RepoItem
 interface GithubReposRepository {
 
     val liveErrorHandler: MutableLiveData<ErrorHandler>
+    val liveIsLastItem: MutableLiveData<Boolean>
 
     fun getReposDataSource(): DataSource.Factory<Int, RepoItem>
 
