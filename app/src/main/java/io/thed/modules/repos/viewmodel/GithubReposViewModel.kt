@@ -1,6 +1,5 @@
 package io.thed.modules.repos.viewmodel
 
-import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -50,6 +49,5 @@ class GithubReposViewModel(private val repository: GithubReposRepository) : View
     fun loadNextPage() {
         page++
         getUserData()
-        Log.d("getUserData", "Page: $page")
     }
 }

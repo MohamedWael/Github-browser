@@ -7,7 +7,7 @@ import io.thed.applevel.PAGE
 import io.thed.applevel.PER_PAGE
 import io.thed.applevel.network.ErrorHandler
 import io.thed.applevel.network.RestCleint
-import io.thed.applevel.network.network
+import io.thed.applevel.network.networkservice.network
 import io.thed.applevel.storage.StorageManager
 import io.thed.modules.repos.response.RepoItem
 import io.thed.modules.repos.response.UserReposResponse
