@@ -1,0 +1,41 @@
+package io.thed.modules.repos.repository
+
+import androidx.lifecycle.MutableLiveData
+import androidx.paging.DataSource
+import androidx.paging.PageKeyedDataSource
+import androidx.paging.PagedList
+import io.thed.applevel.PAGE
+import io.thed.applevel.PER_PAGE
+import io.thed.applevel.network.ErrorHandler
+import io.thed.applevel.network.RestCleint
+import io.thed.applevel.network.network
+import io.thed.applevel.storage.StorageManager
+import io.thed.modules.repos.response.RepoItem
+import io.thed.modules.repos.response.UserReposResponse
+
+val ITEMS_PER_PAGE = 15
+
+class GithubReposRepositoryImpl : GithubReposRepository {
+
+    override val liveErrorHandler: MutableLiveData<ErrorHandler> = MutableLiveData()
+
+    override fun getReposDataSource(): DataSource.Factory<Int, RepoItem> {
+        return StorageManager.githubReposDataSource.getItemsDataSource()
+    }
+
+    override fun getRepos(page: Int) {
+
+        network<UserReposResponse> {
+            execute(
+                createRestClient(RestCleint::class.java).getGithubRepos(
+                    "JakeWharton",
+                    mapOf(Pair(PAGE, page.toString()), Pair(PER_PAGE, ITEMS_PER_PAGE.toString()))
+                ), {
+
+                    StorageManager.githubReposDataSource.insertAll(it)
+                }, {
+                    liveErrorHandler.value = it
+                })
+        }
+    }
+}
