@@ -1,2 +1,2 @@
 # Github-browser
-TheD interview assignment
+An Android app that uses latest android architecture components
